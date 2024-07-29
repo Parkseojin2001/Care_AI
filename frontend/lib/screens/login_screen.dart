@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:frontend/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/join_screen.dart';
 import 'package:frontend/widgets/login_widget.dart';
@@ -11,6 +14,66 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _idController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  Future<void> _login() async {
+    try {
+      final response = await AuthService.login(
+          id: _idController.text, password: _passwordController.text);
+      if (!mounted) return;
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final accessToken = data['access'];
+        //토큰 저장 후 다음 화면으로 이동
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PromptScreen(),
+          ),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('로그인 실패'),
+            content: const Text('아이디 또는 비밀번호가 잘못되었습니다.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('확인'),
+              )
+            ],
+          ),
+        );
+      }
+    } catch (e) {
+      // 예외 처리
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('오류'),
+            content: const Text('로그인 중 문제가 발생했습니다. 나중에 다시 시동해 주세요'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  '확인',
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,11 +108,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   // SingleChildScrollView으로 감싸 줌
                   child: Column(
                     children: [
-                      const LoginWidget(label: "아이디"),
+                      LoginWidget(
+                        label: "아이디",
+                        controller: _idController,
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
-                      const LoginWidget(label: "비밀번호"),
+                      LoginWidget(
+                        label: "비밀번호",
+                        controller: _passwordController,
+                      ),
                       const SizedBox(
                         height: 14,
                       ),
@@ -99,14 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           backgroundColor: const Color(0xff02C139),
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PromptScreen(),
-                            ),
-                          );
-                        },
+                        onPressed: _login,
                         child: const Text("지금 로그인"),
                       ),
                       const SizedBox(

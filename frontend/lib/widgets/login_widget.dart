@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 
-class LoginWidget extends StatefulWidget {
+class LoginWidget extends StatelessWidget {
   final String label;
-  const LoginWidget({
+  final TextEditingController controller;
+
+  LoginWidget({
     super.key,
     required this.label,
+    required this.controller,
   });
 
-  @override
-  State<LoginWidget> createState() => _LoginWidgetState();
-}
-
-class _LoginWidgetState extends State<LoginWidget> {
   final inputValue = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: inputValue,
+      controller: controller,
       decoration: InputDecoration(
-        labelText: widget.label,
+        labelText: label,
       ),
       keyboardType: TextInputType.text,
       style: const TextStyle(
