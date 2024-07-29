@@ -1,8 +1,9 @@
 # Care_AI
 
-주제: Care AI(미정)<br>
+**제목** : Care AI(미정)<br>
 
-설명: Gemini AI API를 이용하여  사용자들의 정신 건강을 증진시키기 위한 AI 어플
+**설명** : Gemini AI API를 이용하여  사용자들의 정신 건강을 증진시키기 위한 AI 어플
+
 <br>
 
 ### 구현해야할 기능
