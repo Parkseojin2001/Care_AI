@@ -148,10 +148,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(
                         height: 14,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Row(
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Icon(
@@ -166,16 +166,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             ],
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: const Text(
-                              "아이디/비밀번호",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15,
-                              ),
-                            ),
                           ),
                         ],
                       ),
