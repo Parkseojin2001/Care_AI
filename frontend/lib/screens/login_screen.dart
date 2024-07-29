@@ -18,9 +18,33 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _login() async {
+    final id = _idController.text;
+    final password = _passwordController.text;
+
+    // 유효성 검사
+    if (id.isEmpty || password.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('로그인 실패'),
+          content: const Text('아이디와 비밀번호 모두 입력해주세요.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('확인'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
     try {
       final response = await AuthService.login(
-          id: _idController.text, password: _passwordController.text);
+        id: _idController.text,
+        password: _passwordController.text,
+      );
       if (!mounted) return;
 
       if (response.statusCode == 200) {
@@ -110,6 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       LoginWidget(
                         label: "아이디",
+                        isPassword: false,
                         controller: _idController,
                       ),
                       const SizedBox(
@@ -118,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       LoginWidget(
                         label: "비밀번호",
                         controller: _passwordController,
+                        isPassword: true,
                       ),
                       const SizedBox(
                         height: 14,

@@ -19,4 +19,22 @@ class AuthService {
       ),
     );
   }
+
+  static Future<http.Response> register({
+    required String id,
+    required String password,
+    required String nickname,
+  }) async {
+    return await http.post(
+      Uri.parse('http://your-django-backend/api/register/'), // backend url로 교체
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset = UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'id': id,
+        'password': password,
+        'nickname': nickname,
+      }),
+    );
+  }
 }
