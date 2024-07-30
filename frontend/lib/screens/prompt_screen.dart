@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:frontend/screens/login_screen.dart';
 
 class PromptScreen extends StatefulWidget {
