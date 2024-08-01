@@ -26,14 +26,14 @@ class _LoginScreenState extends State<LoginScreen> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('로그인 실패'),
-          content: const Text('아이디와 비밀번호 모두 입력해주세요.'),
+          title: const Text('Login Failed'),
+          content: const Text('Please enter both your ID and password.'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('확인'),
+              child: const Text('Check'),
             ),
           ],
         ),
@@ -61,14 +61,14 @@ class _LoginScreenState extends State<LoginScreen> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('로그인 실패'),
-            content: const Text('아이디 또는 비밀번호가 잘못되었습니다.'),
+            title: const Text('Login Failed'),
+            content: const Text('Invalid ID or password.'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('확인'),
+                child: const Text('Check'),
               )
             ],
           ),
@@ -80,15 +80,16 @@ class _LoginScreenState extends State<LoginScreen> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('오류'),
-            content: const Text('로그인 중 문제가 발생했습니다. 나중에 다시 시동해 주세요'),
+            title: const Text('Error'),
+            content: const Text(
+                'There was a problem logging in. Please try again later'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
                 child: const Text(
-                  '확인',
+                  'Check',
                 ),
               ),
             ],
@@ -105,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
-          "로그인",
+          "LOGIN",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w600,
@@ -133,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       LoginWidget(
-                        label: "아이디",
+                        label: "ID",
                         isPassword: false,
                         controller: _idController,
                       ),
@@ -141,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 20,
                       ),
                       LoginWidget(
-                        label: "비밀번호",
+                        label: "Password",
                         controller: _passwordController,
                         isPassword: true,
                       ),
@@ -160,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               SizedBox(width: 5),
                               Text(
-                                "자동로그인",
+                                "Automatic login",
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
@@ -185,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           backgroundColor: const Color(0xff02C139),
                         ),
                         onPressed: _login,
-                        child: const Text("지금 로그인"),
+                        child: const Text("Login"),
                       ),
                       const SizedBox(
                         height: 200,
@@ -200,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                         child: const Text(
-                          "지금 바로 회원가입 >",
+                          "Sign up right now >",
                           style: TextStyle(
                             color: Color(0xff02C139),
                             fontSize: 15,

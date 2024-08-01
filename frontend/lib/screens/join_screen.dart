@@ -30,12 +30,12 @@ class _JoinScreenState extends State<JoinScreen> {
         password.isEmpty ||
         passwordConfirm.isEmpty ||
         nickname.isEmpty) {
-      _showErrorDialog('모든 필드를 채워주세요.');
+      _showErrorDialog('Please complete all fields.');
       return;
     }
 
     if (password != passwordConfirm) {
-      _showErrorDialog('비밀번호가 일치하지 않습니다.');
+      _showErrorDialog('Password does not match.');
       return;
     }
 
@@ -58,11 +58,12 @@ class _JoinScreenState extends State<JoinScreen> {
         );
       } else {
         // 서버에서 응답 실패
-        final errorMessage = jsonDecode(response.body)['error'] ?? '회원가입 실패';
+        final errorMessage =
+            jsonDecode(response.body)['error'] ?? 'Failed to sign up';
         _showErrorDialog(errorMessage);
       }
     } catch (e) {
-      _showErrorDialog('회원가입 요청 중 오류가 발생했습니다.');
+      _showErrorDialog('An error occurred while requesting membership.');
     }
   }
 
@@ -70,14 +71,14 @@ class _JoinScreenState extends State<JoinScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('오류'),
+        title: const Text('Error'),
         content: Text(message),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Text('확인'),
+            child: const Text('Check'),
           ),
         ],
       ),
@@ -92,7 +93,7 @@ class _JoinScreenState extends State<JoinScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
-          "회원가입",
+          "SIGN UP",
           style: TextStyle(
             color: Colors.black,
             fontSize: 24,
@@ -121,26 +122,26 @@ class _JoinScreenState extends State<JoinScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       JoinWidget(
-                        title: "아이디*",
+                        title: "ID*",
                         example: "ex)careai",
                         isPassword: false,
                         controller: _idController,
                       ),
                       JoinWidget(
-                        title: "비밀번호*",
-                        example: "ex) 영문, 숫자 조합 8~16자리",
+                        title: "Password*",
+                        example: "ex) abcdef",
                         isPassword: true,
                         controller: _passwordController,
                       ),
                       JoinWidget(
-                        title: "비밀번호 확인*",
-                        example: "비밀번호를 한번 더 입력해 주세요",
+                        title: "Check Password*",
+                        example: "Enter your password one more time",
                         isPassword: true,
                         controller: _passwordConfirmController,
                       ),
                       JoinWidget(
-                        title: "닉네임*",
-                        example: "ex) 홍길동",
+                        title: "NickName*",
+                        example: "ex) John",
                         isPassword: false,
                         controller: _nicknameController,
                       ),
@@ -150,8 +151,8 @@ class _JoinScreenState extends State<JoinScreen> {
                       FilledButton(
                         style: FilledButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 140,
-                            vertical: 12,
+                            horizontal: 120,
+                            vertical: 14,
                           ),
                           textStyle: const TextStyle(
                             fontSize: 20,
@@ -160,7 +161,7 @@ class _JoinScreenState extends State<JoinScreen> {
                           backgroundColor: Colors.grey,
                         ),
                         onPressed: _register,
-                        child: const Text("가입"),
+                        child: const Text("Sign Up"),
                       ),
                     ],
                   ),
