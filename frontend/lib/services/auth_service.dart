@@ -7,7 +7,7 @@ class AuthService {
     required String password,
   }) async {
     return await http.post(
-      Uri.parse('http://your-django-backend/api/login/'), // backend url로 교체
+      Uri.parse('http://127.0.0.1:8000/'), // login-backend url로 교체
       headers: <String, String>{
         'Content-Type': 'application/json; charset = UTF-8',
       },
@@ -26,7 +26,7 @@ class AuthService {
     required String nickname,
   }) async {
     return await http.post(
-      Uri.parse('http://your-django-backend/api/register/'), // backend url로 교체
+      Uri.parse('http://127.0.0.1:8000/'), // join-backend url로 교체
       headers: <String, String>{
         'Content-Type': 'application/json; charset = UTF-8',
       },
