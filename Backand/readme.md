@@ -21,3 +21,7 @@ Django REST API와 Flutter 프레임워크 연동:
 3. Django REST API에서 생성한 로그인/회원가입 API 엔드포인트에 Flutter 프레임워크에서 HTTP 요청을 보냅니다.
 요청에 JWT 토큰을 포함하여 사용자 인증을 수행합니다.
 응답 데이터를 Flutter 프레임워크에서 처리하여 사용자 인터페이스를 업데이트합니다.
+
+
+
+플러터에서 { http://localhost:8000/api } 여기 주소로 설정하면 돼
