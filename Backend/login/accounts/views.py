@@ -18,6 +18,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from common.forms import UserForm
 
+from rest_framework.decorators import api_view
 
 BASE_URL = 'http://localhost:8000/'
 GOOGLE_CALLBACK_URI = BASE_URL + 'accounts/google/callback/'
@@ -102,7 +103,7 @@ class UserCreateView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-
+@api_view(['POST'])
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
