@@ -40,6 +40,9 @@ class _JoinScreenState extends State<JoinScreen> {
     }
 
     try {
+      // 나중에 지워야할 부분
+      print(
+          'Attempting to register with id: $id, password: $password, nickname: $nickname');
       final response = await AuthService.register(
         id: id,
         password: password,
@@ -47,6 +50,9 @@ class _JoinScreenState extends State<JoinScreen> {
       );
 
       if (!mounted) return;
+      // 나중에 지워야 할 부분
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
 
       if (response.statusCode == 201) {
         //회원가입 성공
