@@ -16,7 +16,7 @@ from .serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from common.forms import UserForm
+from accounts.serializer import UserSerializer
 
 from rest_framework.decorators import api_view
 
