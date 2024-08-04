@@ -20,6 +20,11 @@ from accounts.serializers import UserSerializer
 
 from rest_framework.decorators import api_view
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+import json
+
 BASE_URL = 'http://localhost:8000/'
 GOOGLE_CALLBACK_URI = BASE_URL + 'accounts/google/callback/'
 
@@ -103,9 +108,25 @@ class UserCreateView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+@csrf_exempt
 @api_view(['POST'])
 def signup(request):
     if request.method == "POST":
+        data = json.loads(request.body)
+        email = data['email']
+        password = data['password']
+        username = data['username']
+
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({'error': 'Username already exists'}, status=400)
+        
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({'error': 'Email already exists'}, status=400)
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+
+        
         form = UserSerializer(request.POST)
         if form.is_valid():
             form.save()
@@ -115,9 +136,12 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)     # 사용자 인증
             login(request, user)  # 로그인
             return redirect('index')
+
+    return JsonResponse({'message': 'User created successfully'}, status=201)
     else:
         form = UserSerializer()
     return render(request, '회원가입(다트언어)페이지 링크', {'form': form})
+
 
 
 def logout_view(request):
