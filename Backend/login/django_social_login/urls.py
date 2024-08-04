@@ -21,7 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('dj_rest_auth.urls')),
     path('accounts/', include('allauth.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('pybo/', include('pybo.urls')),
-    path('', views.index, name='index'),  # '/' 에 해당되는 path
+    path('accounts/', include('accounts.urls')), # '/' 에 해당되는 path
 ]

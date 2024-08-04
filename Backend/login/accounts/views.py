@@ -16,14 +16,14 @@ from .serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from accounts.serializer import UserSerializer
+from accounts.serializers import UserSerializer
 
 from rest_framework.decorators import api_view
 
 BASE_URL = 'http://localhost:8000/'
 GOOGLE_CALLBACK_URI = BASE_URL + 'accounts/google/callback/'
 
-state = getattr(settings, 'STATE')
+state = getattr(settings, 'STATE', 'default_state')
 
 
 def google_login(request):
