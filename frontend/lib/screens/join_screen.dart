@@ -63,7 +63,7 @@ class _JoinScreenState extends State<JoinScreen> {
         _showErrorDialog(errorMessage);
       }
     } catch (e) {
-      _showErrorDialog('An error occurred while requesting membership.');
+      _showErrorDialog('An error occurred while requesting membership. $e');
     }
   }
 

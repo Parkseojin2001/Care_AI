@@ -7,9 +7,9 @@ class AuthService {
     required String password,
   }) async {
     return await http.post(
-      Uri.parse('http://127.0.0.1:8000/'), // login-backend url로 교체
+      Uri.parse('~~~~~~~~~'), // login-backend url로 교체
       headers: <String, String>{
-        'Content-Type': 'application/json; charset = UTF-8',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(
         <String, String>{
@@ -26,9 +26,9 @@ class AuthService {
     required String nickname,
   }) async {
     return await http.post(
-      Uri.parse('http://127.0.0.1:8000/'), // join-backend url로 교체
+      Uri.parse('~~~~~~~~'), // join-backend url로 교체
       headers: <String, String>{
-        'Content-Type': 'application/json; charset = UTF-8',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
         'id': id,
