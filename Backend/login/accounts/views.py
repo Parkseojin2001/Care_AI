@@ -109,8 +109,9 @@ def signup(request):
         form = UserSerializer(request.POST)
         if form.is_valid():
             form.save()
+            email = form.cleaned_data.get('eamil')
             username = form.cleaned_data.get('username')      #사용자 이름 작성
-            raw_password = form.cleaned_data.get('password1')     #사용자 비번
+            raw_password = form.cleaned_data.get('password')     #사용자 비번
             user = authenticate(username=username, password=raw_password)     # 사용자 인증
             login(request, user)  # 로그인
             return redirect('index')
