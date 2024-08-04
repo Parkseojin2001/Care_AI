@@ -112,32 +112,15 @@ class UserCreateView(generics.CreateAPIView):
 @api_view(['POST'])
 def signup(request):
     if request.method == "POST":
-        data = json.loads(request.body)
-        email = data['email']
-        password = data['password']
-        username = data['username']
-
-        if User.objects.filter(username=username).exists():
-            return JsonResponse({'error': 'Username already exists'}, status=400)
-        
-        if User.objects.filter(email=email).exists():
-            return JsonResponse({'error': 'Email already exists'}, status=400)
-
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
-
-        
         form = UserSerializer(request.POST)
         if form.is_valid():
             form.save()
-            email = form.cleaned_data.get('eamil')
+            email = form.cleaned_data.get('email')
             username = form.cleaned_data.get('username')      #사용자 이름 작성
             raw_password = form.cleaned_data.get('password')     #사용자 비번
             user = authenticate(username=username, password=raw_password)     # 사용자 인증
             login(request, user)  # 로그인
             return redirect('index')
-
-    return JsonResponse({'message': 'User created successfully'}, status=201)
     else:
         form = UserSerializer()
     return render(request, '회원가입(다트언어)페이지 링크', {'form': form})
