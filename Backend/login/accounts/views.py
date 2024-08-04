@@ -108,7 +108,6 @@ class UserCreateView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-@csrf_exempt
 @api_view(['POST'])
 def signup(request):
     if request.method == "POST":
