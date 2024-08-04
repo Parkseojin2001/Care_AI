@@ -106,7 +106,7 @@ class UserCreateView(generics.CreateAPIView):
 @api_view(['POST'])
 def signup(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
+        form = UserSerializer(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')      #사용자 이름 작성
@@ -115,7 +115,7 @@ def signup(request):
             login(request, user)  # 로그인
             return redirect('index')
     else:
-        form = UserForm()
+        form = UserSerializer()
     return render(request, '회원가입(다트언어)페이지 링크', {'form': form})
 
 
