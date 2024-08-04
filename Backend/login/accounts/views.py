@@ -6,11 +6,13 @@ from django.http import JsonResponse
 from json.decoder import JSONDecodeError
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework import generics
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.google import views as google_view
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from allauth.socialaccount.models import SocialAccount
 from .models import User
+from .serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
@@ -96,7 +98,9 @@ class GoogleLogin(SocialLoginView):
     callback_url = GOOGLE_CALLBACK_URI
     client_class = OAuth2Client
 
-
+class UserCreateView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 def signup(request):
