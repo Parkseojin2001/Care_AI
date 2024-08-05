@@ -114,6 +114,7 @@ def signup(request):
         serializer = UserSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
+            id = serializer.validated_data.get('id')
             email = serializer.validated_data.get('email')
             username = serializer.validated_data.get('username')      #사용자 이름 작성
             raw_password = serializer.validated_data.get('password')     #사용자 비번
