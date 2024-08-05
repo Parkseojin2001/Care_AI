@@ -14,7 +14,7 @@ class CustomTokenRefreshSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['id', 'username', 'email', 'password']
         extra_kwargs = {
             'password': {'write_only': True}  # 패스워드는 읽기 전용으로 설정
         }
