@@ -16,19 +16,18 @@ from .serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from accounts.serializer import UserSerializer
+from accounts.serializers import UserSerializer
 
 from rest_framework.decorators import api_view
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
 import json
 
 BASE_URL = 'http://localhost:8000/'
 GOOGLE_CALLBACK_URI = BASE_URL + 'accounts/google/callback/'
 
-state = getattr(settings, 'STATE')
+state = getattr(settings, 'STATE', 'default_state')
 
 
 def google_login(request):
@@ -111,18 +110,18 @@ class UserCreateView(generics.CreateAPIView):
 @api_view(['POST'])
 def signup(request):
     if request.method == "POST":
-        form = UserSerializer(request.POST)
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('email')
-            username = form.cleaned_data.get('username')      #사용자 이름 작성
-            raw_password = form.cleaned_data.get('password')     #사용자 비번
+        data = json.loads(request.body)
+        serializer = UserSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            email = serializer.validated_data.get('email')
+            username = serializer.validated_data.get('username')      #사용자 이름 작성
+            raw_password = serializer.validated_data.get('password')     #사용자 비번
             user = authenticate(username=username, password=raw_password)     # 사용자 인증
             login(request, user)  # 로그인
-            return redirect('index')
-    else:
-        form = UserSerializer()
-    return render(request, '회원가입(다트언어)페이지 링크', {'form': form})
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return JsonResponse({'error': 'Invalid request method'}, status = status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 
