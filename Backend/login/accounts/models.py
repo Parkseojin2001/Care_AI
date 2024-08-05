@@ -42,14 +42,11 @@ class User(AbstractUser):
     username = models.CharField(max_length=300)
     password = models.CharField(max_length=300)
     
-    ID_FIELD = 'id'
     EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'username'
-    PASSWORD_FIELD = 'password'
     
     REQUIRED_FIELDS = []
 
     objects = UserManager()
 
     def __str__(self):
-        return self.email, self.id, self.username, self.password
+        return self.email
