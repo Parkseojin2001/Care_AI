@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/login_screen.dart';
 import 'dart:async';
+
+import 'package:frontend/screens/prompt_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                const LoginScreen(),
+                const PromptScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               // 페이드 인 애니메이션 설정
