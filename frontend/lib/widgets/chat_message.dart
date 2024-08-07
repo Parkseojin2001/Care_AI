@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class ChatMessage extends StatelessWidget {
   final String text;
+  final bool isUserMessage;
 
   const ChatMessage({
     required this.text,
+    required this.isUserMessage,
     super.key,
   });
 
@@ -13,11 +15,17 @@ class ChatMessage extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Row(
+        mainAxisAlignment:
+            isUserMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            child: Text('Me'),
-          ),
-          const SizedBox(width: 10),
+          if (!isUserMessage) ...[
+            const CircleAvatar(
+              child: Text('AI'),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+          ],
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(7),
@@ -32,6 +40,14 @@ class ChatMessage extends StatelessWidget {
               ),
             ),
           ),
+          if (isUserMessage) ...[
+            const SizedBox(
+              width: 10,
+            ),
+            const CircleAvatar(
+              child: Text('Me'),
+            ),
+          ]
         ],
       ),
     );

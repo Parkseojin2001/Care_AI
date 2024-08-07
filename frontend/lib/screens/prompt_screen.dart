@@ -46,13 +46,16 @@ class _PromptScreenState extends State<PromptScreen> {
   void _sendMessage() async {
     if (_textController.text.isEmpty) return;
 
-    String message = _textController.text;
+    String userMessage = _textController.text;
     setState(() {
-      _messages.add(ChatMessage(text: message));
+      _messages.add(ChatMessage(text: userMessage, isUserMessage: true));
       _textController.clear();
     });
 
-    await ApiService.sendToServer(message);
+    String response = await ApiService.sendToServer(userMessage);
+    setState(() {
+      _messages.add(ChatMessage(text: response, isUserMessage: false));
+    });
   }
 
   @override
