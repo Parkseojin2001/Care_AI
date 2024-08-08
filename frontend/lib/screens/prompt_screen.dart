@@ -11,7 +11,7 @@ class PromptScreen extends StatefulWidget {
 }
 
 class _PromptScreenState extends State<PromptScreen> {
-  late SpeechService _speechService;
+  final SpeechService _speechService = SpeechService();
   bool _isListening = false;
   String _text = '';
   final TextEditingController _textController = TextEditingController();
@@ -20,29 +20,45 @@ class _PromptScreenState extends State<PromptScreen> {
   @override
   void initState() {
     super.initState();
-    _speechService = SpeechService(
-      onResult: (val) {
-        setState(
-          () {
-            _text = val;
-            _textController.text = val;
-          },
-        );
-      },
-    );
+    _speechService.initialize(onResult: _onSpeechResult);
   }
 
-  void _listen() {
-    if (!_isListening) {
-      _speechService.startListening();
-      setState(() => _isListening = true);
+  void _startListening() async {
+    _speechService.startListening();
+    setState(() {
+      _isListening = true;
+    });
+  }
+
+  void _stopListening() async {
+    _speechService.stopListening();
+    setState(() {
+      _isListening = false;
+    });
+    if (_text.isNotEmpty) {
+      _textController.text = _text;
+      _sendMessage();
     } else {
-      _speechService.stopListening();
-      setState(() => _isListening = false);
-      print('Text: $_text');
+      setState(
+        () {
+          _messages.add(
+            const ChatMessage(
+              text: 'Sorry, voice recognition failed. Please say again...',
+              isUserMessage: false,
+            ),
+          );
+        },
+      );
     }
   }
 
+  void _onSpeechResult(String recognizedWords) {
+    setState(() {
+      _text = recognizedWords;
+    });
+  }
+
+  // 사용자 메시지 출력 및 AI 응답 출력
   void _sendMessage() async {
     if (_textController.text.isEmpty) return;
 
@@ -73,11 +89,11 @@ class _PromptScreenState extends State<PromptScreen> {
           ),
         ),
         leading: IconButton(
-          onPressed: _listen,
-          color: Colors.white,
+          onPressed: _isListening ? _stopListening : _startListening,
+          tooltip: 'Listen',
           icon: Icon(
-            _isListening ? Icons.mic : Icons.mic_none,
-            size: 30,
+            _isListening ? Icons.mic : Icons.mic_off,
+            color: Colors.white,
           ),
         ),
       ),

@@ -1,26 +1,23 @@
-import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeechService {
-  late stt.SpeechToText _speech;
-  final Function(String) onResult;
+  final SpeechToText _speechToText = SpeechToText();
 
-  SpeechService({required this.onResult}) {
-    _speech = stt.SpeechToText();
+  Future<void> initialize({required Function(String) onResult}) async {
+    await _speechToText.initialize();
+    _speechToText.listen(
+      onResult: (SpeechRecognitionResult result) {
+        onResult(result.recognizedWords);
+      },
+    );
   }
 
   void startListening() async {
-    bool available = await _speech.initialize(
-      onStatus: (val) => print('onStatus: $val'),
-      onError: (val) => print('onError: $val'),
-    );
-    if (available) {
-      _speech.listen(
-        onResult: (val) => onResult(val.recognizedWords),
-      );
-    }
+    await _speechToText.listen();
   }
 
-  void stopListening() {
-    _speech.stop();
+  void stopListening() async {
+    await _speechToText.stop();
   }
 }
