@@ -20,17 +20,34 @@ class _PromptScreenState extends State<PromptScreen> {
   @override
   void initState() {
     super.initState();
-    _speechService.initialize(onResult: _onSpeechResult);
+    _speechService.initialize();
+
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        setState(
+          () {
+            _messages.add(
+              const ChatMessage(
+                text: '어떤 정신적인 스트레스가 있으신가요?\n ex) 우울증, 스트레스, 외로움',
+                isUserMessage: false,
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   void _startListening() async {
-    _speechService.startListening();
+    print('Listening!!!');
+    _speechService.startListening(onResult: _onSpeechResult);
     setState(() {
       _isListening = true;
     });
   }
 
   void _stopListening() async {
+    print("Stop Listening!!!!");
     _speechService.stopListening();
     setState(() {
       _isListening = false;
@@ -68,7 +85,7 @@ class _PromptScreenState extends State<PromptScreen> {
       _textController.clear();
     });
 
-    String response = await ApiService.sendToServer(userMessage);
+    String response = await ApiService.sendToServer(userMessage, _messages);
     setState(() {
       _messages.add(ChatMessage(text: response, isUserMessage: false));
     });
@@ -78,7 +95,7 @@ class _PromptScreenState extends State<PromptScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff23B6E4),
+        backgroundColor: const Color(0xffA593E0),
         centerTitle: true,
         title: const Text(
           "Care Ai",
@@ -97,7 +114,7 @@ class _PromptScreenState extends State<PromptScreen> {
           ),
         ),
       ),
-      backgroundColor: const Color(0xff23B6E4),
+      backgroundColor: const Color(0xffA593E0),
       body: Column(
         children: [
           Expanded(
@@ -112,15 +129,16 @@ class _PromptScreenState extends State<PromptScreen> {
             margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
-              color: const Color(0xffBDE9F7),
+              color: const Color(0xffFFFFF3),
             ),
             child: Row(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 14),
                   child: Icon(
-                    Icons.manage_search_outlined,
+                    Icons.manage_search_rounded,
                     color: Colors.grey,
+                    size: 32,
                   ),
                 ),
                 Expanded(
@@ -128,11 +146,12 @@ class _PromptScreenState extends State<PromptScreen> {
                     child: TextField(
                       controller: _textController,
                       decoration: const InputDecoration(
+                        border: InputBorder.none,
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.grey,
+                            color: Color(0xffFFFFF3),
                             width: 1,
                           ),
                         ),
@@ -146,7 +165,11 @@ class _PromptScreenState extends State<PromptScreen> {
                 ),
                 IconButton(
                   onPressed: _sendMessage,
-                  icon: const Icon(Icons.send),
+                  icon: const Icon(
+                    Icons.send_rounded,
+                    color: Colors.grey,
+                    size: 28,
+                  ),
                 ),
               ],
             ),

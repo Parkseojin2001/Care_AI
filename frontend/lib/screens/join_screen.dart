@@ -44,9 +44,9 @@ class _JoinScreenState extends State<JoinScreen> {
       print(
           'Attempting to register with id: $id, password: $password, nickname: $nickname');
       final response = await AuthService.register(
-        id: id,
         password: password,
-        nickname: nickname,
+        username: nickname,
+        email: id,
       );
 
       if (!mounted) return;

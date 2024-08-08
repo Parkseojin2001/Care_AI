@@ -7,7 +7,7 @@ class AuthService {
     required String password,
   }) async {
     return await http.post(
-      Uri.parse('~~~~~~~~~'), // login-backend url로 교체
+      Uri.parse('http://172.30.1.88:8000/accounts/'), // login-backend url로 교체
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -21,19 +21,20 @@ class AuthService {
   }
 
   static Future<http.Response> register({
-    required String id,
+    required String email,
     required String password,
-    required String nickname,
+    required String username,
   }) async {
     return await http.post(
-      Uri.parse('~~~~~~~~'), // join-backend url로 교체
+      Uri.parse(
+          'http://172.30.1.65:8000/accounts/signup/'), // join-backend url로 교체
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'id': id,
         'password': password,
-        'nickname': nickname,
+        'username': username,
+        'email': email,
       }),
     );
   }

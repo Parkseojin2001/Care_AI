@@ -20,7 +20,11 @@ class ChatMessage extends StatelessWidget {
         children: [
           if (!isUserMessage) ...[
             const CircleAvatar(
-              child: Text('AI'),
+              backgroundColor: Color(0xff519D9E),
+              child: Text(
+                'AI',
+                style: TextStyle(color: Color(0xffEEEEEE)),
+              ),
             ),
             const SizedBox(
               width: 10,
@@ -28,9 +32,9 @@ class ChatMessage extends StatelessWidget {
           ],
           Expanded(
             child: Container(
-              padding: const EdgeInsets.all(7),
+              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: const Color(0xffE0E3DA),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
@@ -45,7 +49,13 @@ class ChatMessage extends StatelessWidget {
               width: 10,
             ),
             const CircleAvatar(
-              child: Text('Me'),
+              backgroundColor: Color(0xff58C9B9),
+              child: Text(
+                'Me',
+                style: TextStyle(
+                  color: Color(0xffEEEEEE),
+                ),
+              ),
             ),
           ]
         ],
