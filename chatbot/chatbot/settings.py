@@ -11,23 +11,37 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os, json
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&vi-4sso0nh9b1vax3j!uqpv6##*gfuz=*(j!+qn%6*7w#+!1!'
-GENERATIVE_AI_KEY = '~~~~~~~~' # Gemini API
+secret_file = os.path.join(BASE_DIR, "secrets.json")
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting):
+    """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+    
+SECRET_KEY = get_secret("SECRET_KEY")
+GENERATIVE_AI_KEY = get_secret("GENERATIVE_AI_KEY") # Gemini API
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
     '172.30.1.88',
+    '192.168.0.19',
 ]
 
 
