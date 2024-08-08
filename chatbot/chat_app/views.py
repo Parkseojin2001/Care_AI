@@ -20,8 +20,10 @@ def send_message(request):
             model = genai.GenerativeModel("gemini-pro")
         
             bot_response = model.generate_content(user_message)
+            response = bot_response.text
+            response = response.replace('*', '')
             
-            return JsonResponse({"status": "success", "message": bot_response.text}, status=200)
+            return JsonResponse({"status": "success", "message": response}, status=200)
         
         except json.JSONDecodeError:
             return JsonResponse({"status": "fail", "message": "Invalid JSON"}, status=400)
