@@ -14,28 +14,34 @@ def send_message(request):
             data = json.loads(request.body)
             user_message = data.get('text')
             index = data.get('length')
-            print(index)
+            page = data.get('page')
+            
             os.environ["GRPC_VERBOSITY"] = "ERROR"
             os.environ["GLOG_minloglevel"] = "2"
             genai.configure(api_key=GENERATIVE_AI_KEY)
+            
             model = genai.GenerativeModel("gemini-pro")
-            if index == '2':
-                print('case_1')
-                response = '좀 더 구체적으로 상황을 말해주세요'
-            elif index == '4':
-                print('case_2')
-                user_message = user_message +'정중하고 예의바르게 구체적인 상황에 대해 공감만 해줘.'
-                bot_response = model.generate_content(user_message)
-                response = bot_response.text
-                response = response.replace('*', '') + '\n이 상황을 극복하는데 도움이 될 만한 해결책을 알려드릴까요?'
-                
+            
+            if page == '1':
+                if index == '2':
+                    response = 'Please tell me the specific situation'
+                elif index == '4':
+                    user_message = user_message +'Just be polite and courteous and empathize with the specific situation.'
+                    bot_response = model.generate_content(user_message)
+                    response = bot_response.text
+                    response = response.replace('*', '') + '\nCan I tell you a solution that can help overcome this situation?'
+                else:
+                    bot_response = model.generate_content(user_message)
+                    response = bot_response.text
+                    response = response.replace('*', '')
             else:
-                print('case_3')
-                user_message = user_message 
+                if index == '2':
+                    user_message = user_message + 'Show me the test for mental pain.'
+                    
                 bot_response = model.generate_content(user_message)
                 response = bot_response.text
                 response = response.replace('*', '')
-            print(response)
+                
             return JsonResponse({"status": "success", "message": response}, status=200)
         
         except json.JSONDecodeError:
