@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/screens/menu_screen.dart';
 import 'dart:async';
-
-import 'package:frontend/screens/prompt_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                const PromptScreen(),
+                const MenuScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               // 페이드 인 애니메이션 설정
@@ -31,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             // 애니메이션 지속 시간 설정
-            transitionDuration: const Duration(milliseconds: 1000),
+            transitionDuration: const Duration(milliseconds: 2000),
           ),
         );
       },
@@ -51,15 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
               "Care Ai",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 40,
+                fontSize: 70,
                 fontWeight: FontWeight.w700,
               ),
             ),
-            Icon(
-              Icons.health_and_safety_sharp,
-              color: Colors.white,
-              size: 120,
-            )
+            Text(
+              "with GEMINI",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),

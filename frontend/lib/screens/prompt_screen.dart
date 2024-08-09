@@ -16,6 +16,7 @@ class _PromptScreenState extends State<PromptScreen> {
   String _text = '';
   final TextEditingController _textController = TextEditingController();
   final List<ChatMessage> _messages = [];
+  bool _isButtonShown = false;
 
   @override
   void initState() {
@@ -28,7 +29,8 @@ class _PromptScreenState extends State<PromptScreen> {
           () {
             _messages.add(
               const ChatMessage(
-                text: '어떤 정신적인 스트레스가 있으신가요?\n ex) 우울증, 스트레스, 외로움',
+                text:
+                    'What kind of mental pain are you experiencing?\n ex) depression, stress, loneliness, etc....',
                 isUserMessage: false,
               ),
             );
@@ -80,12 +82,28 @@ class _PromptScreenState extends State<PromptScreen> {
     if (_textController.text.isEmpty) return;
 
     String userMessage = _textController.text;
+    String page = '1';
     setState(() {
       _messages.add(ChatMessage(text: userMessage, isUserMessage: true));
       _textController.clear();
     });
 
-    String response = await ApiService.sendToServer(userMessage, _messages);
+    String response =
+        await ApiService.sendToServer(userMessage, _messages, page);
+    setState(() {
+      _messages.add(ChatMessage(text: response, isUserMessage: false));
+    });
+  }
+
+  void _selectButton(String text) async {
+    String userMessage = text;
+    setState(() {
+      _messages.add(ChatMessage(text: userMessage, isUserMessage: true));
+      _textController.clear();
+      _isButtonShown = false;
+    });
+
+    String response = 'Please tell me the specific situation';
     setState(() {
       _messages.add(ChatMessage(text: response, isUserMessage: false));
     });
@@ -100,19 +118,24 @@ class _PromptScreenState extends State<PromptScreen> {
         title: const Text(
           "Care Ai",
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
+            color: Color(0xffFFFFF3),
+            fontSize: 30,
             fontWeight: FontWeight.w600,
           ),
         ),
-        leading: IconButton(
-          onPressed: _isListening ? _stopListening : _startListening,
-          tooltip: 'Listen',
-          icon: Icon(
-            _isListening ? Icons.mic : Icons.mic_off,
-            color: Colors.white,
-          ),
+        leading: const BackButton(
+          color: Color(0xffFFFFF3),
         ),
+        actions: [
+          IconButton(
+            onPressed: _isListening ? _stopListening : _startListening,
+            tooltip: 'Listen',
+            icon: Icon(
+              _isListening ? Icons.mic : Icons.mic_off,
+              color: const Color(0xffFFFFF3),
+            ),
+          ),
+        ],
       ),
       backgroundColor: const Color(0xffA593E0),
       body: Column(
