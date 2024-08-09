@@ -29,7 +29,7 @@ def send_message(request):
                     user_message = user_message +'Just be polite and courteous and empathize with the specific situation.'
                     bot_response = model.generate_content(user_message)
                     response = bot_response.text
-                    response = response.replace('*', '') + '\nCan I tell you a solution that can help overcome this situation?'
+                    response = response.replace('*', '') + '\nIf you want to overcome this situation, tell me how to overcome this situation.'
                 else:
                     bot_response = model.generate_content(user_message)
                     response = bot_response.text
