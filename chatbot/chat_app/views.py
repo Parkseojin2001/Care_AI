@@ -21,12 +21,13 @@ def send_message(request):
             genai.configure(api_key=GENERATIVE_AI_KEY)
             
             model = genai.GenerativeModel("gemini-pro")
-            
+            print(page)
+            print(index)
             if page == '1':
                 if index == '2':
                     response = 'Please tell me the specific situation'
-                elif index == '4':
-                    user_message = user_message +'Just be polite and courteous and empathize with the specific situation.'
+                elif index == '5':
+                    user_message = user_message +'I would like you to talk to me about a specific situation like a counselor, empathizing with the situation. But, I don\'t want you to tell me the solution.'
                     bot_response = model.generate_content(user_message)
                     response = bot_response.text
                     response = response.replace('*', '') + '\nIf you want to overcome this situation, tell me how to overcome this situation.'
