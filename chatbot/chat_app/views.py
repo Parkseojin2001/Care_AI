@@ -21,8 +21,6 @@ def send_message(request):
             genai.configure(api_key=GENERATIVE_AI_KEY)
             
             model = genai.GenerativeModel("gemini-pro")
-            print(page)
-            print(index)
             if page == '1':
                 if index == '2':
                     response = 'Please tell me the specific situation'
