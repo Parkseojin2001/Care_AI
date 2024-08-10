@@ -15,8 +15,8 @@ class _PromptScreenState extends State<PromptScreen> {
   bool _isListening = false;
   String _text = '';
   final TextEditingController _textController = TextEditingController();
-  final List<ChatMessage> _messages = [];
-  bool _isButtonShown = false;
+  final List<Widget> _messages = [];
+  bool _isButtonShown = true;
 
   @override
   void initState() {
@@ -30,13 +30,48 @@ class _PromptScreenState extends State<PromptScreen> {
             _messages.add(
               const ChatMessage(
                 text:
-                    'What kind of mental pain are you experiencing?\n ex) depression, stress, loneliness, etc....',
+                    'What kind of mental pain are you experiencing?\n ex) depression, anxiety disorders, loneliness, etc....',
                 isUserMessage: false,
               ),
             );
+            _messages.add(_buildOption());
           },
         );
       },
+    );
+  }
+
+  Widget _buildOption() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildOptionButton('Depression'),
+            _buildOptionButton('Loneliness'),
+            _buildOptionButton('Anxiety Disorders'),
+            _buildOptionButton('etc...'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOptionButton(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: FilledButton(
+        style: ButtonStyle(
+          backgroundColor:
+              WidgetStateProperty.all<Color>(const Color(0xff1e306e)),
+        ),
+        child: Text(text),
+        onPressed: () {
+          _selectButton(text);
+        },
+      ),
     );
   }
 
