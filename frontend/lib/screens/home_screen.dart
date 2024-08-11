@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     // 1초 후에 다음 페이지로 이동
     Timer(
-      const Duration(milliseconds: 500),
+      const Duration(milliseconds: 3000),
       () {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(

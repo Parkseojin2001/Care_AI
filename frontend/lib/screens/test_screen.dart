@@ -83,14 +83,24 @@ class _TestScreenState extends State<TestScreen> {
     String userMessage = _textController.text;
     String page = '2';
     setState(() {
-      _messages.add(ChatMessage(text: userMessage, isUserMessage: true));
+      _messages.add(
+        ChatMessage(
+          text: userMessage,
+          isUserMessage: true,
+        ),
+      );
       _textController.clear();
     });
 
     String response =
         await ApiService.sendToServer(userMessage, _messages, page);
     setState(() {
-      _messages.add(ChatMessage(text: response, isUserMessage: false));
+      _messages.add(
+        ChatMessage(
+          text: response,
+          isUserMessage: false,
+        ),
+      );
     });
   }
 

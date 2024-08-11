@@ -119,29 +119,53 @@ class _PromptScreenState extends State<PromptScreen> {
     String userMessage = _textController.text;
     String page = '1';
     setState(() {
-      _messages.add(ChatMessage(text: userMessage, isUserMessage: true));
+      _messages.add(
+        ChatMessage(
+          text: userMessage,
+          isUserMessage: true,
+        ),
+      );
       _textController.clear();
     });
 
     String response =
         await ApiService.sendToServer(userMessage, _messages, page);
-    setState(() {
-      _messages.add(ChatMessage(text: response, isUserMessage: false));
-    });
+    setState(
+      () {
+        _messages.add(
+          ChatMessage(
+            text: response,
+            isUserMessage: false,
+          ),
+        );
+      },
+    );
   }
 
   void _selectButton(String text) async {
     String userMessage = text;
     setState(() {
-      _messages.add(ChatMessage(text: userMessage, isUserMessage: true));
+      _messages.add(
+        ChatMessage(
+          text: userMessage,
+          isUserMessage: true,
+        ),
+      );
       _textController.clear();
       _isButtonShown = false;
     });
 
     String response = 'Please tell me the specific situation';
-    setState(() {
-      _messages.add(ChatMessage(text: response, isUserMessage: false));
-    });
+    setState(
+      () {
+        _messages.add(
+          ChatMessage(
+            text: response,
+            isUserMessage: false,
+          ),
+        );
+      },
+    );
   }
 
   @override
