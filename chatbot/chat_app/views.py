@@ -35,7 +35,7 @@ def send_message(request):
                     response = response.replace('*', '')
             else:
                 if index == '2':
-                    user_message = user_message + 'Show me the test for mental pain.'
+                    user_message = 'show me the ' + user_message + ' checklist'
                     
                 bot_response = model.generate_content(user_message)
                 response = bot_response.text
