@@ -25,11 +25,11 @@
 
 ## Introduction
 
-### Care Ai will be used to reduce mental suffering.
+#### Care Ai will be used to reduce mental suffering.
 Recently, people are experiencing various mental pain due to many social problems.<br>
 This application allows people to sympathize with the feelings of people experiencing mental pain (ex. depression, loneliness, etc.). And it tells you ways to put it into practice on a daily basis to solve this problem.
 
-### This app provides two functions.
+#### This app provides two functions.
 
 1. Psychological counseling
 
@@ -68,7 +68,7 @@ This application allows people to sympathize with the feelings of people experie
 
 <br>
 
-<h2>📦 Main Function</h2>
+<h2>📦 Functions</h2>
 
 <h4>📌 Counseling for mental distress</h4>
 
@@ -78,4 +78,7 @@ This application allows people to sympathize with the feelings of people experie
 <h4>📌 Simple test for mental problems</h4>
 
 - A function that provides a simple diagnosis checklist regarding the mental pain the user is currently experiencing
+  
+<h4> 📌 Voice recognition</h4>
 
+- If it is difficult to enter user information using the keyboard, user information can be entered using the voice recognition function.
