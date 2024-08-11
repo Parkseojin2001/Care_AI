@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             // 애니메이션 지속 시간 설정
-            transitionDuration: const Duration(milliseconds: 2000),
+            transitionDuration: const Duration(milliseconds: 3000),
           ),
         );
       },

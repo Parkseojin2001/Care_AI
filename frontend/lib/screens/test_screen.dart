@@ -27,7 +27,7 @@ class _TestScreenState extends State<TestScreen> {
             _messages.add(
               const ChatMessage(
                 text:
-                    'What mental illness would you like to be tested for?\n ex) depression, stress, loneliness, etc...',
+                    'What mental illness would you like to be checked for? (Please enter only words) \n ex) depression, stress, loneliness, etc...',
                 isUserMessage: false,
               ),
             );

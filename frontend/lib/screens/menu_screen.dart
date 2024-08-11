@@ -76,7 +76,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     FilledButton(
                       style: FilledButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 75,
+                          horizontal: 65,
                           vertical: 12,
                         ),
                         textStyle: const TextStyle(
@@ -93,7 +93,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         );
                       },
                       child: const Text(
-                        "Psychological test",
+                        "Psychological Check",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
