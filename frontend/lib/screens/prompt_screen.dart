@@ -76,6 +76,7 @@ class _PromptScreenState extends State<PromptScreen> {
   }
 
   void _startListening() async {
+    _text = '';
     _speechService.startListening(onResult: _onSpeechResult);
     setState(
       () {
@@ -118,15 +119,17 @@ class _PromptScreenState extends State<PromptScreen> {
 
     String userMessage = _textController.text;
     String page = '1';
-    setState(() {
-      _messages.add(
-        ChatMessage(
-          text: userMessage,
-          isUserMessage: true,
-        ),
-      );
-      _textController.clear();
-    });
+    setState(
+      () {
+        _messages.add(
+          ChatMessage(
+            text: userMessage,
+            isUserMessage: true,
+          ),
+        );
+        _textController.clear();
+      },
+    );
 
     String response =
         await ApiService.sendToServer(userMessage, _messages, page);
