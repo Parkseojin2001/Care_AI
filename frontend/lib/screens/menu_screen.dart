@@ -49,7 +49,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     FilledButton(
                       style: FilledButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 43,
+                          horizontal: 35,
                           vertical: 12,
                         ),
                         textStyle: const TextStyle(
@@ -76,7 +76,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     FilledButton(
                       style: FilledButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 65,
+                          horizontal: 57,
                           vertical: 12,
                         ),
                         textStyle: const TextStyle(

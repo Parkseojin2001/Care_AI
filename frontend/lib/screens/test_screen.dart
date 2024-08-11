@@ -12,6 +12,8 @@ class TestScreen extends StatefulWidget {
 
 class _TestScreenState extends State<TestScreen> {
   final SpeechService _speechService = SpeechService();
+  bool _isListening = false;
+  String _text = '';
   final TextEditingController _textController = TextEditingController();
   final List<ChatMessage> _messages = [];
 
@@ -31,13 +33,47 @@ class _TestScreenState extends State<TestScreen> {
                 isUserMessage: false,
               ),
             );
-            const Row(
-              children: [],
-            );
           },
         );
       },
     );
+  }
+
+  void _startListening() async {
+    _speechService.startListening(onResult: _onSpeechResult);
+    setState(
+      () {
+        _isListening = true;
+      },
+    );
+  }
+
+  void _stopListening() async {
+    _speechService.stopListening();
+    setState(() {
+      _isListening = false;
+    });
+    if (_text.isNotEmpty) {
+      _textController.text = _text;
+      _sendMessage();
+    } else {
+      setState(
+        () {
+          _messages.add(
+            const ChatMessage(
+              text: 'Sorry, voice recognition failed. Please say again...',
+              isUserMessage: false,
+            ),
+          );
+        },
+      );
+    }
+  }
+
+  void _onSpeechResult(String recognizedWords) {
+    setState(() {
+      _text = recognizedWords;
+    });
   }
 
   // 사용자 메시지 출력 및 AI 응답 출력
@@ -75,6 +111,16 @@ class _TestScreenState extends State<TestScreen> {
         leading: const BackButton(
           color: Color(0xffFFFFF3),
         ),
+        actions: [
+          IconButton(
+            onPressed: _isListening ? _stopListening : _startListening,
+            tooltip: 'Listen',
+            icon: Icon(
+              _isListening ? Icons.mic : Icons.mic_off,
+              color: const Color(0xffFFFFF3),
+            ),
+          ),
+        ],
       ),
       backgroundColor: const Color(0xffA593E0),
       body: Column(

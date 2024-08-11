@@ -76,15 +76,15 @@ class _PromptScreenState extends State<PromptScreen> {
   }
 
   void _startListening() async {
-    print('Listening!!!');
     _speechService.startListening(onResult: _onSpeechResult);
-    setState(() {
-      _isListening = true;
-    });
+    setState(
+      () {
+        _isListening = true;
+      },
+    );
   }
 
   void _stopListening() async {
-    print("Stop Listening!!!!");
     _speechService.stopListening();
     setState(() {
       _isListening = false;
