@@ -82,3 +82,8 @@ This application allows people to sympathize with the feelings of people experie
 <h4> 📌 Voice recognition</h4>
 
 - If it is difficult to enter user information using the keyboard, user information can be entered using the voice recognition function.
+
+
+  ## YouTube
+
+[https://www.youtube.com/watch?v=3ybxeH-xkik](https://www.youtube.com/watch?v=V6YGVaIC5ZI)
