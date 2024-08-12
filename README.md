@@ -49,7 +49,7 @@ This application allows people to sympathize with the feelings of people experie
 <h3>Environment</h3>
 <p>
    <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-2979CC?style=for-the-badge&logo=Vscode&logoColor=white"> </a>&nbsp
-   <img src="https://img.shields.io/badge/HEROKU-430098?style=for-the-badge&logo=Heroku&logoColor=white"> </a>&nbsp
+   <img src="https://img.shields.io/badge/GOOGLE CLOUD-4285F4?style=for-the-badge&logo=Google Cloud&logoColor=white"> </a>&nbsp
    <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=Git&logoColor=white"> </a>&nbsp
    <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=Github&logoColor=white"> </a>&nbsp
 </p>
@@ -86,4 +86,4 @@ This application allows people to sympathize with the feelings of people experie
 
   ## YouTube
 
-     https://www.youtube.com/watch?v=V6YGVaIC5ZI
+     [YOUTUBE](https://www.youtube.com/watch?v=V6YGVaIC5ZI)
