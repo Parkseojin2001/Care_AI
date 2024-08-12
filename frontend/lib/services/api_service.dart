@@ -6,7 +6,7 @@ class ApiService {
       String text, List messages, String page) async {
     String length = messages.length.toString();
     final response = await http.post(
-      Uri.parse('http://172.30.1.65:8000/chatbot/send/'), // local IP
+      Uri.parse('http://34.64.145.130:8000/chatbot/send/'), // GCP IP
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -27,12 +27,7 @@ GENERATIVE_AI_KEY = os.getenv("GENERATIVE_AI_KEY") # Gemini API
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '172.30.1.88',
-    '192.168.0.19',
-    '172.30.1.16',
-    '172.30.1.65',
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
