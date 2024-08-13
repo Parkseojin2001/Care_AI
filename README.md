@@ -10,6 +10,7 @@
 ## Competition
 
 > Gemini API Competition<br>
+>
 > Development period : 2024 7. ~ 2024.08
 
 <br>
@@ -18,8 +19,8 @@
 
   |  이름 |  담당  | Github  |
   | :---:| :---: | :---: |
-  | 박서진 |  Flutter<br>Django<br>Gemini | <a href="https://github.com/Parkseojin2001"><img src="https://img.shields.io/badge/Parkseojin2001-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/Parkseojin2001"/></a>|
-  | 이승제 |  Django<br> Gemini<br> YouTube Video  |<a href="https://github.com/leesj00"><img src="https://img.shields.io/badge/leesj00-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/leesj00"/></a>||
+  | seojin Park |  Flutter<br>Django<br>Gemini | <a href="https://github.com/Parkseojin2001"><img src="https://img.shields.io/badge/Parkseojin2001-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/Parkseojin2001"/></a>|
+  | seungje Lee |  Django<br> Gemini<br> YouTube Video  |<a href="https://github.com/leesj00"><img src="https://img.shields.io/badge/leesj00-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/leesj00"/></a>||
 
 <br>
 
@@ -34,6 +35,16 @@ This application allows people to sympathize with the feelings of people experie
 1. Psychological counseling
 
 2. Psychological Check
+
+<br>
+
+<h2>🏃‍♀️‍➡️ Start Guide</h2>
+
+<h3>Installation</h3>
+
+1. Download v1.0.1 app-release.apk from GitHub release.
+2.  Open the downloaded file and the app will run
+   (Only works on Android phones)
 
 <br>
 
