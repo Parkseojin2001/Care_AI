@@ -7,7 +7,7 @@
 
 <br>
 
-## Competition
+## 🏅 Competition
 
 > Gemini API Competition<br>
 >
@@ -15,7 +15,7 @@
 
 <br>
 
-## App development team
+## ✌️ App development team
 
   |  이름 |  담당  | Github  |
   | :---:| :---: | :---: |
@@ -24,7 +24,7 @@
 
 <br>
 
-## Introduction
+## 📝 Introduction
 
 #### Care Ai will be used to reduce mental suffering.
 Recently, people are experiencing various mental pain due to many social problems.<br>
@@ -94,7 +94,8 @@ This application allows people to sympathize with the feelings of people experie
 
 - If it is difficult to enter user information using the keyboard, user information can be entered using the voice recognition function.
 
+<br>
 
-  ## YouTube
+<h2>📽️ YouTube</h2> 
 
-     [YOUTUBE](https://www.youtube.com/watch?v=V6YGVaIC5ZI)
+[Care-Ai YOUTUBE](https://www.youtube.com/watch?v=V6YGVaIC5ZI)
