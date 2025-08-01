@@ -1,28 +1,19 @@
 # Care_AI
 
-<br>
-<p align="center">
-  <img width = 300 src="https://github.com/user-attachments/assets/58692b4c-2c8b-45a1-8b4d-f502cc5dc6b2">
-</p>
-
-<br>
-
 ## 🏅 Competition
 
-> Gemini API Competition<br>
->
-> Development period : 2024 7. ~ 2024.08
+Gemini API Competition<br>
+
+Development period : 2024 7. ~ 2024.08
 
 <br>
 
 ## ✌️ App development team
-
-  |  이름 |  담당  | Github  |
-  | :---:| :---: | :---: |
-  | seojin Park |  Flutter<br>Django<br>Gemini | <a href="https://github.com/Parkseojin2001"><img src="https://img.shields.io/badge/Parkseojin2001-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/Parkseojin2001"/></a>|
-  | seungje Lee |  Django<br> Gemini<br> YouTube Video  |<a href="https://github.com/leesj00"><img src="https://img.shields.io/badge/leesj00-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/leesj00"/></a>||
-
-<br>
+	
+|항목|seojin Park|seungje Lee|
+| :---:| :---: | :---: |
+|역할|BE / FE / GEMINI|BE / GEMINI / YouTub Video|
+|GitHUB|[<img src="https://avatars.githubusercontent.com/u/85439023?v=4" height=100 width=100>](https://github.com/Parkseojin2001)|[<img src="https://avatars.githubusercontent.com/u/144108244?v=4" height=100 width=100>](https://github.com/leesj00)|
 
 ## 📝 Introduction
 
@@ -60,7 +51,7 @@ This application allows people to sympathize with the feelings of people experie
 <h3>Environment</h3>
 <p>
    <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-2979CC?style=for-the-badge&logo=Vscode&logoColor=white"> </a>&nbsp
-   <img src="https://img.shields.io/badge/GOOGLE CLOUD-4285F4?style=for-the-badge&logo=Google Cloud&logoColor=white"> </a>&nbsp
+   <img src="https://img.shields.io/badge/GOOGLE CLOUD-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white"> </a>&nbsp
    <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=Git&logoColor=white"> </a>&nbsp
    <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=Github&logoColor=white"> </a>&nbsp
 </p>
