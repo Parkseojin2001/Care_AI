@@ -9,13 +9,11 @@ Development period : 2024 7. ~ 2024.08
 <br>
 
 ## ✌️ App development team
-
-  |  이름 |  담당  | Github  |
-  | :---:| :---: | :---: |
-  | seojin Park |  Flutter<br>Django<br>Gemini | <a href="https://github.com/Parkseojin2001"><img src="https://img.shields.io/badge/Parkseojin2001-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/Parkseojin2001"/></a>|
-  | seungje Lee |  Django<br> Gemini<br> YouTube Video  |<a href="https://github.com/leesj00"><img src="https://img.shields.io/badge/leesj00-181717?style=flat-square&logo=Github&logoColor=white&link=https://github.com/leesj00"/></a>||
-
-<br>
+	
+|항목|seojin Park|seungje Lee|
+| :---:| :---: | :---: |
+|역할|BE / FE / GEMINI|BE / GEMINI / YouTub Video|
+|GitHUB|[<img src="https://avatars.githubusercontent.com/u/85439023?v=4" height=100 width=100>](https://github.com/Parkseojin2001)|[<img src="https://avatars.githubusercontent.com/u/144108244?v=4" height=100 width=100>](https://github.com/leesj00)|
 
 ## 📝 Introduction
 
