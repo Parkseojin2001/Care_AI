@@ -1,17 +1,10 @@
 # Care_AI
 
-<br>
-<p align="center">
-  <img width = 300 src="https://github.com/user-attachments/assets/58692b4c-2c8b-45a1-8b4d-f502cc5dc6b2">
-</p>
-
-<br>
-
 ## 🏅 Competition
 
-> Gemini API Competition<br>
->
-> Development period : 2024 7. ~ 2024.08
+Gemini API Competition<br>
+
+Development period : 2024 7. ~ 2024.08
 
 <br>
 
@@ -60,7 +53,7 @@ This application allows people to sympathize with the feelings of people experie
 <h3>Environment</h3>
 <p>
    <img src="https://img.shields.io/badge/VISUAL STUDIO CODE-2979CC?style=for-the-badge&logo=Vscode&logoColor=white"> </a>&nbsp
-   <img src="https://img.shields.io/badge/GOOGLE CLOUD-4285F4?style=for-the-badge&logo=Google Cloud&logoColor=white"> </a>&nbsp
+   <img src="https://img.shields.io/badge/GOOGLE CLOUD-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white"> </a>&nbsp
    <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=Git&logoColor=white"> </a>&nbsp
    <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=Github&logoColor=white"> </a>&nbsp
 </p>
